@@ -1,0 +1,188 @@
+/* ═══════════════════════════════════════════════════════════
+   DEVOS — MOBILE CSS
+═══════════════════════════════════════════════════════════ */
+
+/* ══════════════════════════════════════
+   BOTTOM NAVIGATION
+══════════════════════════════════════ */
+.mobile-nav {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: var(--mobile-nav-h);
+  background: rgba(10,10,15,0.92);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-top: 1px solid var(--color-border);
+  padding: 0 var(--space-2);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.mobile-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  flex: 1;
+  height: 100%;
+  padding: var(--space-2) var(--space-1);
+  color: var(--color-text-3);
+  font-size: 0.65rem;
+  font-weight: 500;
+  transition: color var(--trans-fast);
+  border: none;
+  background: none;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+.mobile-nav-item svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  transition: transform var(--trans-base);
+}
+.mobile-nav-item.active {
+  color: var(--color-accent);
+}
+.mobile-nav-item.active svg {
+  transform: translateY(-2px);
+}
+.mobile-nav-item:active svg {
+  transform: scale(0.88);
+}
+
+/* Mobile nav layout */
+@media (max-width: 768px) {
+  .mobile-nav {
+    display: flex;
+    align-items: stretch;
+  }
+}
+
+/* ══════════════════════════════════════
+   TOUCH-FRIENDLY ADJUSTMENTS
+══════════════════════════════════════ */
+@media (max-width: 768px) {
+  /* Larger touch targets */
+  .btn { min-height: 44px; }
+  .btn-sm { min-height: 36px; }
+  .filter-chip { min-height: 36px; }
+  .nav-btn { min-height: 44px; min-width: 44px; }
+
+  /* Section spacing */
+  .section { padding-top: var(--section-gap-sm); }
+  .section-title { font-size: 1.8rem; }
+
+  /* Cards stack */
+  .hero-cards { grid-template-columns: 1fr; }
+  .hero-card-wide { grid-column: auto; }
+
+  /* Explorer stacks */
+  .explorer-layout { grid-template-columns: 1fr; }
+
+  /* Search bar */
+  .search-bar-inner {
+    padding-inline: var(--space-4);
+    gap: var(--space-3);
+  }
+  .search-filters {
+    order: 3;
+    width: 100%;
+  }
+
+  /* Terminal full height */
+  .terminal-overlay {
+    align-items: flex-end;
+    padding: 0;
+  }
+  .terminal-window {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  /* Command palette from bottom on mobile */
+  .cmd-overlay {
+    align-items: flex-end;
+    padding-top: 0;
+    padding-inline: 0;
+  }
+  .cmd-palette {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    width: 100%;
+  }
+
+  /* Projects grid */
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Dashboard */
+  .dashboard-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Skills */
+  .skills-layout { grid-template-columns: 1fr; }
+  .skills-chart-wrap { display: none; }
+}
+
+@media (max-width: 480px) {
+  .dashboard-grid { grid-template-columns: 1fr 1fr; gap: var(--space-2); }
+  .achievements-grid { grid-template-columns: repeat(2, 1fr); }
+  .hero-stats { gap: var(--space-3); }
+  .stat-value { font-size: 1.2rem; }
+}
+
+/* ══════════════════════════════════════
+   SWIPE INDICATOR (visual hint)
+══════════════════════════════════════ */
+.swipe-hint {
+  display: none;
+  position: fixed;
+  bottom: calc(var(--mobile-nav-h) + var(--space-3));
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  padding: var(--space-2) var(--space-4);
+  font-size: 0.72rem;
+  color: var(--color-text-3);
+  font-family: var(--font-mono);
+  pointer-events: none;
+  animation: fadeIn 0.3s ease, fadeIn 0.3s 2.5s ease reverse forwards;
+}
+
+@media (max-width: 768px) and (hover: none) {
+  .swipe-hint { display: block; }
+}
+
+/* ══════════════════════════════════════
+   SAFE AREA
+══════════════════════════════════════ */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .mobile-nav {
+    padding-bottom: env(safe-area-inset-bottom);
+    height: calc(var(--mobile-nav-h) + env(safe-area-inset-bottom));
+  }
+  .main-content {
+    padding-bottom: calc(var(--mobile-nav-h) + env(safe-area-inset-bottom) + var(--space-10));
+  }
+}
+
+/* ══════════════════════════════════════
+   APP-LIKE FEEL
+══════════════════════════════════════ */
+@media (display-mode: standalone) {
+  .top-nav {
+    padding-top: env(safe-area-inset-top);
+    height: calc(var(--nav-h) + env(safe-area-inset-top));
+  }
+}
