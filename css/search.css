@@ -1,0 +1,132 @@
+/* ═══════════════════════════════════════════════════════════
+   DEVOS — SEARCH CSS
+═══════════════════════════════════════════════════════════ */
+
+.search-bar-wrapper {
+  position: sticky;
+  top: var(--nav-h);
+  z-index: 90;
+  background: rgba(10,10,15,0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--color-border);
+  animation: fadeInDown 0.2s var(--ease-out);
+}
+.search-bar-wrapper[hidden] { display: none; }
+
+.search-bar-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: var(--space-3) var(--space-8);
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+.search-icon {
+  width: 18px;
+  height: 18px;
+  color: var(--color-text-3);
+  flex-shrink: 0;
+}
+.search-input {
+  flex: 1;
+  min-width: 200px;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--color-text);
+  caret-color: var(--color-accent);
+}
+.search-input::placeholder { color: var(--color-text-3); }
+.search-filters {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+.search-close {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-3);
+  transition: all var(--trans-fast);
+  flex-shrink: 0;
+}
+.search-close svg { width: 16px; height: 16px; }
+.search-close:hover {
+  background: var(--glass-bg);
+  color: var(--color-text);
+}
+
+/* ══════════════════════════════════════
+   SEARCH RESULTS OVERLAY
+══════════════════════════════════════ */
+.search-results-overlay {
+  position: fixed;
+  top: calc(var(--nav-h) + 57px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 89;
+  width: min(700px, 90vw);
+  max-height: 60vh;
+  overflow-y: auto;
+  background: var(--color-bg-3);
+  border: 1px solid var(--color-border-2);
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  animation: fadeInDown 0.15s var(--ease-out);
+}
+
+.search-result-section {
+  padding: var(--space-3) var(--space-4);
+}
+.search-result-section-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--color-text-3);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: var(--space-2) 0 var(--space-2);
+}
+.search-result-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background var(--trans-fast);
+}
+.search-result-item:hover { background: rgba(124,106,245,0.1); }
+.search-result-item-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--color-text-3);
+}
+.search-result-item-icon svg { width: 13px; height: 13px; }
+.search-result-title {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-text);
+}
+.search-result-sub {
+  font-size: 0.75rem;
+  color: var(--color-text-3);
+  font-family: var(--font-mono);
+}
+mark {
+  background: rgba(124,106,245,0.25);
+  color: var(--color-accent-2);
+  border-radius: 2px;
+  padding: 0 2px;
+}
