@@ -1,0 +1,114 @@
+/* ═══════════════════════════════════════════════════════════
+   DEVOS — ACHIEVEMENTS CSS
+═══════════════════════════════════════════════════════════ */
+
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--space-4);
+}
+
+.achievement-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  text-align: center;
+  transition: all var(--trans-base);
+  position: relative;
+  overflow: hidden;
+}
+.achievement-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at top,
+    var(--achieve-color, rgba(124,106,245,0.1)),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity var(--trans-base);
+}
+.achievement-card:hover {
+  border-color: var(--color-border-2);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+.achievement-card:hover::before { opacity: 1; }
+
+/* Locked vs Unlocked */
+.achievement-card.locked {
+  opacity: 0.4;
+  filter: grayscale(1);
+}
+.achievement-card.locked:hover {
+  opacity: 0.55;
+  filter: grayscale(0.7);
+}
+.achievement-card.unlocked {
+  animation: achieveUnlock 0.6s var(--ease-spring) both;
+  animation-delay: var(--delay, 0s);
+}
+
+.achievement-icon {
+  font-size: 2.2rem;
+  line-height: 1;
+  filter: drop-shadow(0 0 12px var(--achieve-glow, rgba(251,191,36,0.4)));
+}
+.achievement-card.locked .achievement-icon {
+  filter: none;
+}
+
+.achievement-title {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+.achievement-desc {
+  font-size: 0.72rem;
+  color: var(--color-text-3);
+  line-height: 1.5;
+}
+.achievement-badge {
+  margin-top: auto;
+}
+.achievement-card.unlocked .achievement-badge .badge { 
+  background: rgba(52,211,153,0.12);
+  color: var(--color-green);
+  border-color: rgba(52,211,153,0.25);
+}
+.achievement-card.locked .achievement-badge .badge {
+  background: var(--color-surface-2);
+  color: var(--color-text-3);
+  border-color: var(--color-border);
+}
+
+/* ── Progress achievements ── */
+.achievement-progress {
+  width: 100%;
+  height: 4px;
+  background: var(--color-surface-3);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  margin-top: var(--space-2);
+}
+.achievement-progress-fill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  background: var(--achieve-color, var(--color-accent));
+  transition: width 1s var(--ease-out);
+  transition-delay: var(--delay, 0s);
+}
+
+@media (max-width: 768px) {
+  .achievements-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 400px) {
+  .achievements-grid { grid-template-columns: repeat(2, 1fr); gap: var(--space-3); }
+}
