@@ -1,0 +1,158 @@
+/* ═══════════════════════════════════════════════════════════
+   DEVOS — PROJECTS CSS
+═══════════════════════════════════════════════════════════ */
+
+/* ══════════════════════════════════════
+   TOOLBAR
+══════════════════════════════════════ */
+.projects-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
+  flex-wrap: wrap;
+}
+.projects-filters {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+/* ══════════════════════════════════════
+   PROJECTS GRID
+══════════════════════════════════════ */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--space-5);
+}
+
+/* ══════════════════════════════════════
+   PROJECT CARD
+══════════════════════════════════════ */
+.project-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  transition: all var(--trans-base);
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+}
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(
+    circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(124,106,245,0.05),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity var(--trans-base);
+  pointer-events: none;
+}
+.project-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-border-2);
+  box-shadow: var(--shadow-md);
+}
+.project-card:hover::before { opacity: 1; }
+
+/* Card header */
+.project-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+.project-card-title {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-accent-2);
+  transition: color var(--trans-fast);
+  word-break: break-word;
+}
+.project-card-title:hover { color: var(--color-accent); }
+.project-card-badges {
+  display: flex;
+  gap: var(--space-2);
+  flex-shrink: 0;
+}
+
+/* Card body */
+.project-card-desc {
+  font-size: 0.85rem;
+  color: var(--color-text-2);
+  line-height: 1.6;
+  flex: 1;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+/* Topics */
+.project-card-topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+}
+
+/* Meta row */
+.project-card-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  font-size: 0.78rem;
+  color: var(--color-text-3);
+}
+.project-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.project-meta-item svg { width: 12px; height: 12px; flex-shrink: 0; }
+.project-lang-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.project-lang-name { color: var(--color-text-2); }
+
+/* Card actions */
+.project-card-actions {
+  display: flex;
+  gap: var(--space-2);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border);
+  flex-wrap: wrap;
+}
+
+/* ══════════════════════════════════════
+   HIDDEN / FILTERED
+══════════════════════════════════════ */
+.project-card.hidden {
+  display: none;
+}
+
+/* ══════════════════════════════════════
+   LOAD MORE
+══════════════════════════════════════ */
+.projects-load-more {
+  margin-top: var(--space-8);
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .projects-grid { grid-template-columns: 1fr; }
+  .projects-toolbar { flex-direction: column; align-items: flex-start; }
+}
