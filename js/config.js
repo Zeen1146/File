@@ -17,7 +17,7 @@ window.DevOS.CONFIG = {
 
   /* ── Site ── */
   SITE_TITLE:       'DevOS — GitHub Portfolio',
-  SITE_URL:         'https://zeen1146.github.io/File/',
+  SITE_URL:         'https://yourusername.github.io',
   SITE_THEME_COLOR: '#0a0a0f',
 
   /* ── Cache (milliseconds) ── */
