@@ -1,0 +1,244 @@
+/* ═══════════════════════════════════════════════════════════
+   DEVOS — EXPLORER CSS
+═══════════════════════════════════════════════════════════ */
+
+.explorer-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: var(--space-4);
+  min-height: 500px;
+}
+
+/* ══════════════════════════════════════
+   SIDEBAR
+══════════════════════════════════════ */
+.explorer-sidebar {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.explorer-sidebar-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--color-text-3);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.explorer-sidebar-header svg { width: 14px; height: 14px; }
+.explorer-repo-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-2);
+}
+
+.explorer-repo-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--trans-fast);
+  position: relative;
+}
+.explorer-repo-item:hover {
+  background: var(--glass-bg);
+  color: var(--color-text);
+}
+.explorer-repo-item.active {
+  background: rgba(124,106,245,0.1);
+  color: var(--color-accent-2);
+}
+.explorer-repo-item.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 20%;
+  bottom: 20%;
+  width: 2px;
+  background: var(--color-accent);
+  border-radius: var(--radius-full);
+}
+.explorer-repo-item svg { width: 14px; height: 14px; flex-shrink: 0; color: var(--color-text-3); }
+.explorer-repo-name {
+  font-size: 0.83rem;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+}
+.explorer-repo-lang-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ══════════════════════════════════════
+   MAIN TREE PANEL
+══════════════════════════════════════ */
+.explorer-main {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.explorer-main-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-5);
+  border-bottom: 1px solid var(--color-border);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--color-text-2);
+  background: rgba(0,0,0,0.2);
+}
+.explorer-main-header svg { width: 14px; height: 14px; color: var(--color-accent); }
+#explorerRepoTitle {
+  font-weight: 500;
+  color: var(--color-accent-2);
+}
+
+.explorer-tree {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-3);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+}
+
+/* Empty state */
+.explorer-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  height: 100%;
+  min-height: 300px;
+  color: var(--color-text-3);
+  text-align: center;
+  padding: var(--space-8);
+}
+.explorer-empty-state svg { width: 40px; height: 40px; opacity: 0.3; }
+.explorer-empty-state p { font-size: 0.82rem; font-family: var(--font-body); }
+
+/* ── Tree nodes ── */
+.tree-folder,
+.tree-file {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 4px var(--space-2);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background var(--trans-fast), color var(--trans-fast);
+  position: relative;
+  user-select: none;
+}
+.tree-folder:hover,
+.tree-file:hover {
+  background: rgba(255,255,255,0.05);
+}
+.tree-file:hover { color: var(--color-text); }
+
+.tree-indent {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+.tree-guide {
+  width: 16px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  opacity: 0.3;
+  font-size: 0.7rem;
+  color: var(--color-text-3);
+}
+
+.tree-icon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+.tree-folder-icon { color: #e8c55a; }
+.tree-file-icon   { color: var(--color-text-3); }
+.tree-file-icon.icon-html  { color: var(--lang-html); }
+.tree-file-icon.icon-css   { color: var(--lang-css); }
+.tree-file-icon.icon-js    { color: var(--lang-js); }
+.tree-file-icon.icon-ts    { color: var(--lang-ts); }
+.tree-file-icon.icon-py    { color: var(--lang-python); }
+.tree-file-icon.icon-md    { color: #79c0ff; }
+.tree-file-icon.icon-json  { color: #fbbf24; }
+.tree-file-icon.icon-img   { color: var(--color-green); }
+
+.tree-name {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--color-text-2);
+}
+.tree-folder .tree-name { color: var(--color-text); font-weight: 500; }
+
+.tree-file-badge {
+  flex-shrink: 0;
+  font-size: 0.62rem;
+  font-weight: 700;
+  padding: 1px 5px;
+  border-radius: var(--radius-full);
+  background: rgba(52,211,153,0.15);
+  color: var(--color-green);
+  border: 1px solid rgba(52,211,153,0.25);
+  letter-spacing: 0.03em;
+}
+
+.tree-chevron {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+  transition: transform var(--trans-fast);
+  color: var(--color-text-3);
+  margin-right: 2px;
+}
+.tree-folder.open .tree-chevron { transform: rotate(90deg); }
+
+.tree-children {
+  overflow: hidden;
+  transition: height var(--trans-base);
+}
+
+/* Loading spinner in tree */
+.tree-loading {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-5);
+  color: var(--color-text-3);
+  font-size: 0.8rem;
+}
+.tree-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--color-surface-3);
+  border-top-color: var(--color-accent);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+@media (max-width: 900px) {
+  .explorer-layout { grid-template-columns: 1fr; }
+  .explorer-sidebar { max-height: 260px; }
+}
