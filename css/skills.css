@@ -1,0 +1,120 @@
+/* ═══════════════════════════════════════════════════════════
+   DEVOS — SKILLS CSS
+═══════════════════════════════════════════════════════════ */
+
+.skills-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: var(--space-8);
+  align-items: start;
+}
+
+/* ══════════════════════════════════════
+   SKILL BARS
+══════════════════════════════════════ */
+.skills-bars {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.skill-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out);
+  transition-delay: var(--delay, 0s);
+}
+.skill-item.in-view {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.skill-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.skill-name-wrap {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+.skill-lang-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.skill-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+.skill-count {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-text-3);
+}
+.skill-pct {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-accent-2);
+}
+
+.skill-bar-track {
+  height: 6px;
+  background: var(--color-surface-3);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  position: relative;
+}
+.skill-bar-fill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  background: var(--skill-color, var(--color-accent));
+  width: 0%;
+  transition: width 1.2s var(--ease-out);
+  transition-delay: var(--fill-delay, 0s);
+  position: relative;
+  overflow: hidden;
+}
+.skill-bar-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60px;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3));
+  animation: shimmer 2s linear infinite;
+}
+.skill-bar-fill.filled {
+  width: var(--fill-width);
+}
+
+/* ══════════════════════════════════════
+   SKILLS RADAR CHART
+══════════════════════════════════════ */
+.skills-chart-wrap {
+  padding: var(--space-6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-xl);
+  position: sticky;
+  top: calc(var(--nav-h) + var(--space-4));
+}
+#skillsChart {
+  max-width: 280px;
+  max-height: 280px;
+}
+
+@media (max-width: 900px) {
+  .skills-layout { grid-template-columns: 1fr; }
+  .skills-chart-wrap { position: static; }
+  #skillsChart { max-width: 240px; max-height: 240px; margin: 0 auto; }
+}
