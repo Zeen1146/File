@@ -1,0 +1,98 @@
+/* ═══════════════════════════════════════════════════════════
+   DEVOS — DASHBOARD CSS
+═══════════════════════════════════════════════════════════ */
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--space-4);
+}
+
+.dash-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  position: relative;
+  overflow: hidden;
+  transition: all var(--trans-base);
+  cursor: default;
+}
+.dash-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--card-color, var(--color-accent));
+  opacity: 0.6;
+  transition: opacity var(--trans-base);
+}
+.dash-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  border-color: var(--color-border-2);
+}
+.dash-card:hover::after { opacity: 1; }
+
+.dash-card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.05);
+  color: var(--card-color, var(--color-accent));
+  transition: transform var(--trans-base);
+}
+.dash-card-icon svg { width: 22px; height: 22px; }
+.dash-card:hover .dash-card-icon { transform: scale(1.1) rotate(5deg); }
+
+.dash-card-value {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--color-text);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.dash-card-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-3);
+}
+.dash-card-sub {
+  margin-top: auto;
+  font-size: 0.78rem;
+  color: var(--color-text-3);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+.dash-card-sub a {
+  color: var(--card-color, var(--color-accent));
+  transition: opacity var(--trans-fast);
+}
+.dash-card-sub a:hover { opacity: 0.8; }
+
+/* ══════════════════════════════════════
+   COLOR VARIANTS
+══════════════════════════════════════ */
+.dash-card[data-color="purple"] { --card-color: var(--color-accent); }
+.dash-card[data-color="teal"]   { --card-color: var(--color-teal); }
+.dash-card[data-color="pink"]   { --card-color: var(--color-pink); }
+.dash-card[data-color="amber"]  { --card-color: var(--color-amber); }
+.dash-card[data-color="green"]  { --card-color: var(--color-green); }
+.dash-card[data-color="blue"]   { --card-color: #60a5fa; }
+
+@media (max-width: 768px) {
+  .dashboard-grid { grid-template-columns: repeat(2, 1fr); gap: var(--space-3); }
+  .dash-card-value { font-size: 1.8rem; }
+}
+@media (max-width: 400px) {
+  .dashboard-grid { grid-template-columns: 1fr 1fr; }
+  }
