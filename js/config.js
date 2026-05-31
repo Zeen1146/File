@@ -7,7 +7,7 @@ window.DevOS = window.DevOS || {};
 
 window.DevOS.CONFIG = {
   /* ── YOUR GITHUB USERNAME ── */
-  GITHUB_USERNAME: 'torvalds', // ← CHANGE THIS
+  GITHUB_USERNAME: 'Zeen1146', // ← CHANGE THIS
 
   /* ── GitHub API ── */
   GITHUB_API:       'https://api.github.com',
@@ -17,7 +17,7 @@ window.DevOS.CONFIG = {
 
   /* ── Site ── */
   SITE_TITLE:       'DevOS — GitHub Portfolio',
-  SITE_URL:         'https://yourusername.github.io',
+  SITE_URL:         'https://zeen1146.github.io/File/',
   SITE_THEME_COLOR: '#0a0a0f',
 
   /* ── Cache (milliseconds) ── */
