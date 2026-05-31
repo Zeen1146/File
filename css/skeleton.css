@@ -1,0 +1,124 @@
+/* ═══════════════════════════════════════════════════════════
+   DEVOS — SKELETON LOADING CSS
+═══════════════════════════════════════════════════════════ */
+
+/* ══════════════════════════════════════
+   BASE SKELETON
+══════════════════════════════════════ */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-surface-2) 0%,
+    var(--color-surface-3) 40%,
+    var(--color-surface-2) 80%,
+    var(--color-surface-2) 100%
+  );
+  background-size: 800px 100%;
+  animation: shimmer 1.6s ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+  border-radius: var(--radius-md);
+  will-change: background-position;
+}
+
+/* ══════════════════════════════════════
+   SKELETON SHAPES
+══════════════════════════════════════ */
+.skeleton-text {
+  height: 14px;
+}
+.skeleton-sm {
+  width: 120px;
+  height: 12px;
+}
+.skeleton-lg {
+  width: 200px;
+  height: 28px;
+  border-radius: var(--radius-md);
+}
+.skeleton-bio {
+  width: 320px;
+  height: 14px;
+  margin-top: var(--space-2);
+}
+.skeleton-full {
+  width: 100%;
+  height: 16px;
+}
+.skeleton-num {
+  width: 60px;
+  height: 28px;
+}
+
+/* Avatar */
+.avatar-skeleton {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Stats */
+.skeleton-stat {
+  width: 80px;
+  height: 40px;
+  border-radius: var(--radius-md);
+}
+
+/* Cards */
+.skeleton-card {
+  height: 140px;
+  border-radius: var(--radius-lg);
+  animation-delay: var(--delay, 0s);
+}
+
+/* Skill bar */
+.skeleton-skill {
+  height: 52px;
+  border-radius: var(--radius-md);
+  animation-delay: var(--delay, 0s);
+}
+
+/* Project card */
+.skeleton-project-card {
+  height: 220px;
+  border-radius: var(--radius-lg);
+  animation-delay: var(--delay, 0s);
+}
+
+/* Repo item */
+.skeleton-repo-item {
+  height: 40px;
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-2);
+  animation-delay: var(--delay, 0s);
+}
+
+/* Activity item */
+.skeleton-activity {
+  height: 60px;
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-3);
+  animation-delay: var(--delay, 0s);
+}
+
+/* Timeline item */
+.skeleton-timeline {
+  height: 80px;
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-5);
+  animation-delay: var(--delay, 0s);
+}
+
+/* Achievement */
+.skeleton-achievement {
+  height: 110px;
+  border-radius: var(--radius-lg);
+  animation-delay: var(--delay, 0s);
+}
+
+/* ══════════════════════════════════════
+   TRANSITION OUT
+══════════════════════════════════════ */
+.skeleton-fade-out {
+  animation: fadeIn 0.3s ease reverse forwards;
+}
